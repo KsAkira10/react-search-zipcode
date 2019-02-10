@@ -1,16 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
+import withBehavior from './withBehavior';
+import Home from './withView';
 
-export default class Home extends Component {
-  render() {
-    return (
-      <>
-        <header>
-          <nav />
-        </header>
-        <main>
-          <h1>Home is work!</h1>
-        </main>
-      </>
-    );
-  }
-}
+const Enhanced = withBehavior(({ ...rest }) => <Home {...rest} />);
+
+export default Enhanced;

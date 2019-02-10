@@ -1,6 +1,6 @@
 import * as nativeAxios from 'axios';
 
-const BASE_URL = '/api/';
+const BASE_URL = 'https://viacep.com.br/';
 const ERROR_TIMEOUT =
   'Infelizmente estamos com problemas de conexão, tente novamente mais tarde.';
 

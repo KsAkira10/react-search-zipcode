@@ -4,7 +4,6 @@ const initialState = {
   success: false,
   error: false,
   data: {},
-  location: {},
 };
 
 export const ACTION_TYPES = {
@@ -25,7 +24,7 @@ const getLocationSuccess = (state, { data }) => {
     isFetched: true,
     success: true,
     error: false,
-    location: data,
+    data,
   };
   return newState;
 };

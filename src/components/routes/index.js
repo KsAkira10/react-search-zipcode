@@ -8,6 +8,13 @@ export default class Routes extends Component {
     return (
       <Router history={browserHistory}>
         <Fragment>
+          {/* <Fragment>
+            <header>
+              <nav className="navbar navbar-light bg-light">
+                <span className="navbar-brand mb-0 h1">Navbar</span>
+              </nav>
+            </header>
+          </Fragment> */}
           <Route
             render={() => (
               <Switch>

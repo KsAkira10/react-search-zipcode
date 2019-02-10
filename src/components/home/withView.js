@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { compose } from 'recompose';
+import Modal from 'react-bootstrap/Modal';
 import FormSearchByZipCode from '../form';
 import './home.css';
 
@@ -12,7 +13,7 @@ type HomeProps = {
 
 const enhancer = compose();
 
-const Home = enhancer(({ ...props }: HomeProps) => {
+const Home = enhancer(({ handleClose, show, ...props }: HomeProps) => {
   return (
     <main className="container-fluid">
       <hgroup className="header">
@@ -20,11 +21,32 @@ const Home = enhancer(({ ...props }: HomeProps) => {
       </hgroup>
       <section className="section">
         <FormSearchByZipCode {...props} />
-        <pre className="mt-5">
-          <code className="code">
-            {props.isFetched && JSON.stringify(props.data)}
-          </code>
-        </pre>
+        {props.isFetched && (
+          <Modal.Dialog show={show}>
+            <Modal.Body>
+              <Modal.Title className="d-flex justify-content-between">
+                {props.data && props.data.logradouro}
+                <button
+                  type="button"
+                  className="close-button"
+                  onClick={handleClose}
+                >
+                  X
+                </button>
+              </Modal.Title>
+              <div>
+                <div>{props.data && props.data.bairro}</div>
+                <div>
+                  {props.data && `${props.data.localidade} - ${props.data.uf}`}
+                </div>
+                <div>{props.data && props.data.cep}</div>
+              </div>
+              <div>
+                <h1>RENDER MAPS HERE!</h1>
+              </div>
+            </Modal.Body>
+          </Modal.Dialog>
+        )}
       </section>
     </main>
   );

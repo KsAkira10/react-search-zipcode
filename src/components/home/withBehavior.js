@@ -1,5 +1,11 @@
 // @flow
-import { compose, setDisplayName, withProps } from 'recompose';
+import {
+  compose,
+  setDisplayName,
+  withProps,
+  withState,
+  withHandlers,
+} from 'recompose';
 import { connect } from 'react-redux';
 
 const withBehavior = compose(
@@ -9,11 +15,17 @@ const withBehavior = compose(
     isFetched,
     isFetching,
   })),
+  withState('show', 'setShow', 'true'),
   withProps(({ data, isFetched, isFetching }) => ({
     data,
     isFetched,
     isFetching,
-  }))
+  })),
+  withHandlers({
+    handleClose: ({ setShow }) => () => {
+      setShow('false');
+    },
+  })
 );
 
 export default withBehavior;

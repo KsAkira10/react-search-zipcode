@@ -1,5 +1,6 @@
 import React from 'react';
 import { compose } from 'recompose';
+import './form.css';
 
 const enhancer = compose();
 

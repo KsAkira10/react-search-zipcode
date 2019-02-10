@@ -17,18 +17,6 @@ export const fetchLocationByZipCode = payload => ({
   payload,
 });
 
-const getLocationSuccess = (state, { data }) => {
-  const newState = {
-    ...state,
-    isFetching: false,
-    isFetched: true,
-    success: true,
-    error: false,
-    data,
-  };
-  return newState;
-};
-
 const location = (state = initialState, { type, payload }) => {
   switch (type) {
     case ACTION_TYPES.OFFER_BY_ID_REQUEST:
@@ -41,8 +29,17 @@ const location = (state = initialState, { type, payload }) => {
         ...state,
         isFetching: true,
       };
-    case ACTION_TYPES.LOCATION_BY_ZIP_CODE_SUCCESS:
-      return getLocationSuccess(state, payload);
+    case ACTION_TYPES.LOCATION_BY_ZIP_CODE_SUCCESS: {
+      const { data } = payload;
+      return {
+        ...state,
+        isFetching: false,
+        isFetched: true,
+        success: true,
+        error: false,
+        data,
+      };
+    }
     case ACTION_TYPES.LOCATION_BY_ZIP_CODE_ERROR:
       return {
         ...state,

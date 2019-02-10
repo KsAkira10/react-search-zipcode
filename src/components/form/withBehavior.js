@@ -12,16 +12,12 @@ import { fetchLocationByZipCode } from '../../store/reducers/locationReducer';
 const withBehavior = compose(
   setDisplayName('withBehavior'),
   connect(
-    ({ state }) => ({ state }),
+    props => props,
     {
       fetchLocationByZipCodeAction: fetchLocationByZipCode,
     }
   ),
-  withProps(({ ...props }) => ({
-    isFetching: props.isFetching,
-    isFetched: props.isFetched,
-    location: props.location,
-  })),
+  withProps(props => props),
   withState('value', 'setValue', ''),
   withHandlers({
     handleSubmit: ({ value, fetchLocationByZipCodeAction }) => event => {

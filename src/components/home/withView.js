@@ -3,7 +3,7 @@ import React from 'react';
 import { compose } from 'recompose';
 import Modal from 'react-bootstrap/Modal';
 import FormSearchByZipCode from '../form';
-import hereMaps from '../../config/hereMaps';
+import Map from '../map';
 import './home.css';
 
 type HomeProps = {
@@ -14,43 +14,35 @@ type HomeProps = {
 
 const enhancer = compose();
 
-const Home = enhancer(({ handleClose, show, ...props }: HomeProps) => {
-  return (
-    <main className="container-fluid">
-      <hgroup className="header">
-        <h1>Consulta de endereço</h1>
-      </hgroup>
-      <section className="section">
-        <FormSearchByZipCode {...props} />
-        {props.isFetched && (
-          <Modal.Dialog show={show}>
-            <Modal.Body>
-              <Modal.Title className="d-flex justify-content-between">
-                {props.data && props.data.logradouro}
-                <input
-                  type="button"
-                  className="close-button"
-                  onClick={handleClose}
-                  value="x"
-                />
-              </Modal.Title>
+const Home = enhancer(({ handleClose, show, ...props }: HomeProps) => (
+  <main className="container-fluid">
+    <hgroup className="header">
+      <h1>Consulta de endereço</h1>
+    </hgroup>
+    <section className="section">
+      <FormSearchByZipCode {...props} />
+      {props.isFetched && show && (
+        <Modal.Dialog>
+          <Modal.Title>
+            <div>{props.data && props.data.logradouro}</div>
+          </Modal.Title>
+          <Modal.Body>
+            <div>
+              <div>{props.data && props.data.bairro}</div>
               <div>
-                <div>{props.data && props.data.bairro}</div>
-                <div>
-                  {props.data && `${props.data.localidade} - ${props.data.uf}`}
-                </div>
-                <div>{props.data && props.data.cep}</div>
+                {props.data && `${props.data.localidade} - ${props.data.uf}`}
               </div>
-              <div>
-                <h1>RENDER MAPS HERE!</h1>
-              </div>
-            </Modal.Body>
-          </Modal.Dialog>
-        )}
-      </section>
-    </main>
-  );
-});
+              <div>{props.data && props.data.cep}</div>
+            </div>
+            <div className="mt-5">
+              <Map {...props} />
+            </div>
+          </Modal.Body>
+        </Modal.Dialog>
+      )}
+    </section>
+  </main>
+));
 
 Home.defaultProps = {
   isFetching: false,

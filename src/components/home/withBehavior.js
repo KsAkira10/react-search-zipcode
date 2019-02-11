@@ -15,15 +15,15 @@ const withBehavior = compose(
     isFetched,
     isFetching,
   })),
-  withState('show', 'setShow', 'true'),
+  withState('show', 'setShow', true),
   withProps(({ data, isFetched, isFetching }) => ({
     data,
     isFetched,
     isFetching,
   })),
   withHandlers({
-    handleClose: ({ setShow }) => () => {
-      setShow('false');
+    handleClose: ({ setShow, show }) => () => {
+      setShow(!show);
     },
   })
 );

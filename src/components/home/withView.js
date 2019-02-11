@@ -3,6 +3,7 @@ import React from 'react';
 import { compose } from 'recompose';
 import Modal from 'react-bootstrap/Modal';
 import FormSearchByZipCode from '../form';
+import hereMaps from '../../config/hereMaps';
 import './home.css';
 
 type HomeProps = {
@@ -26,13 +27,12 @@ const Home = enhancer(({ handleClose, show, ...props }: HomeProps) => {
             <Modal.Body>
               <Modal.Title className="d-flex justify-content-between">
                 {props.data && props.data.logradouro}
-                <button
+                <input
                   type="button"
                   className="close-button"
                   onClick={handleClose}
-                >
-                  X
-                </button>
+                  value="x"
+                />
               </Modal.Title>
               <div>
                 <div>{props.data && props.data.bairro}</div>

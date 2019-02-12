@@ -23,7 +23,7 @@ const withBehavior = compose(
   withState(
     'url',
     'setUrl',
-    'https://image.maps.api.here.com/mia/1.6/mapview?&h=300&w=auto&z=14&t=5&poitxs=16&poitxc=black&poifc=yellow'
+    'https://image.maps.api.here.com/mia/1.6/mapview?&h=300&w=auto&z=16&t=5&poitxs=16&poitxc=black&poifc=yellow'
   ),
   withState('points', 'setPoints', []),
   withProps(({ data, isFetched, isFetching }) => {

@@ -17,8 +17,8 @@ type FormSearchByZipCodeProps = {
 const FormSearchByZipCode = enhancer(
   ({ handleSubmit, handleChange, ...props }: FormSearchByZipCodeProps) => (
     <>
-      <h6>Consultar</h6>
       <form onSubmit={handleSubmit}>
+        <h6>Consultar</h6>
         <div className="form-group row">
           <label
             htmlFor="colFormLabelSm"
@@ -36,6 +36,8 @@ const FormSearchByZipCode = enhancer(
               onChange={handleChange}
               required
               placeholder={props.placeholder}
+              minLength="8"
+              maxLength="9"
             />
           </div>
           <div className="col-2">

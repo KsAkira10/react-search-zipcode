@@ -20,8 +20,13 @@ const withBehavior = compose(
   withProps(props => props),
   withState('value', 'setValue', ''),
   withHandlers({
-    handleSubmit: ({ value, fetchLocationByZipCodeAction }) => event => {
+    handleSubmit: ({
+      value,
+      fetchLocationByZipCodeAction,
+      setShow,
+    }) => event => {
       event.preventDefault();
+      setShow(true);
       const zipCode = value.replace('-', '');
       fetchLocationByZipCodeAction({ zipCode });
     },

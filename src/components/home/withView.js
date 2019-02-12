@@ -29,7 +29,7 @@ const enhancer = compose(
 
 const Home = enhancer(({ show, handleClose, ...props }: HomeProps) => (
   <main className="container">
-    <hgroup className="header">
+    <hgroup className="header mt-3">
       <h1>Consulta de endereço</h1>
     </hgroup>
     <section className="section d-flex justify-content-center">

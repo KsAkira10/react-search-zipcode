@@ -7,6 +7,7 @@
     "start": "react-scripts start",
     "build": "NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
+    "test:debug": "react-scripts --inspect-brk test --runInBand",
     "eject": "react-scripts eject",
     "precommit": "NODE_ENV=production lint-staged",
     "flow": "flow",
